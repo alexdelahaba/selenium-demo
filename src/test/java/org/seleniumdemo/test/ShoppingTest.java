@@ -5,14 +5,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.seleniumdemo.pageobject.*;
 
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.*;
 
-public class ShoppingTest {
+public class ShoppingTest {/*
     private WebDriver driver;
 
     @Before
@@ -32,9 +31,9 @@ public class ShoppingTest {
 
     @Test
     public void addShortsToCartValidatePriceAndCleanCart() throws Exception {
-        HomePage homePage = new HomePage(this.driver);
+        PáginaEntradaFilmaffinity homePage = new PáginaEntradaFilmaffinity(this.driver);
         CategoryPage categoryPage = new CategoryPage(driver);
-        SubCategoryPage subCategoryPage = new SubCategoryPage(driver);
+        PaginaImagen subCategoryPage = new PaginaImagen(driver);
         ProductDetailPage productDetailPage = new ProductDetailPage(driver);
         CheckoutPage checkoutPage = new CheckoutPage(driver);
 
@@ -58,5 +57,5 @@ public class ShoppingTest {
     @After
     public void tearDown() throws Exception {
         driver.quit();
-    }
+    }*/
 }

@@ -6,19 +6,25 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 public class pruebasExcel {
-    private static final String FILE_NAME = "C:/Users/Alejandro/Desktop/Pruebas/Selenium-Maven-Template-master/MyFirstExcel.xlsx";
+    private static final String FILE_NAME = "Excel/MyFirstExcel.xlsx";
 
     @Test
     public void crearArchivoBasico() {
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet sheet = workbook.createSheet("Datatypes in Java");
+       List<String> list = Arrays.asList("1","2","1","2","1","2");
+       String res = String.join(",",list);
+
         Object[][] datatypes = {
                 {"Datatype", "Type", "Size(in bytes)"},
-                {"int", "Primitive", 2},
-                {"float", "Primitive", 4},
+                {"int", "Primitive", res},
+                {"float", res, 4},
                 {"double", "Primitive", 8},
                 {"char", "Primitive", 1},
                 {"String", "Non-Primitive", "No fixed size"}
