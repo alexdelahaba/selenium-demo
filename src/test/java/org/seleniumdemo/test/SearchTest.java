@@ -28,15 +28,18 @@ public class SearchTest {
     }
 
     @Test
-    public void searchDressAndValidateResults() throws IOException {
+    public void lanzarBaseDeDatosPeliculas() throws IOException {
         PáginaEntradaFilmaffinity paginaEntrada = new PáginaEntradaFilmaffinity(driver);
         PaginaPelicula paginaPelicula = new PaginaPelicula(driver);
         PaginaImagen paginaImagen = new PaginaImagen(driver);
 
         paginaEntrada.loadHomePage();
-        paginaEntrada.search("Histoires extraordinaires");
 
-        paginaPelicula.scraper();
+        paginaEntrada.search("novecento");
+        //grindhouse
+        //scoop
+        //novecento
+        paginaPelicula.encontrarCaracteristicasPagina();
 
         String urlImagen = paginaPelicula.localizarImagen();
         paginaImagen.loadHomePage(urlImagen);

@@ -5,13 +5,13 @@ import java.util.List;
 public class Pelicula {
     String titulo;
     String tituloOriginal;
-    Integer anio;
-    Integer duracion;
+    String anio;
+    String duracion;
     String pais;
     List<String> directores;
     List<String> guionistas;
-    String musica;
-    String fotografia;
+    List<String> musica;
+    List<String> fotografia;
     List<String> actores;
     List<String> generos;
     String sinopsis;
@@ -35,19 +35,19 @@ public class Pelicula {
         this.tituloOriginal = tituloOriginal;
     }
 
-    public Integer getAnio() {
+    public String getAnio() {
         return anio;
     }
 
-    public void setAnio(Integer anio) {
+    public void setAnio(String anio) {
         this.anio = anio;
     }
 
-    public Integer getDuracion() {
+    public String getDuracion() {
         return duracion;
     }
 
-    public void setDuracion(Integer duracion) {
+    public void setDuracion(String duracion) {
         this.duracion = duracion;
     }
 
@@ -75,19 +75,19 @@ public class Pelicula {
         this.guionistas = guionistas;
     }
 
-    public String getMusica() {
+    public List<String> getMusica() {
         return musica;
     }
 
-    public void setMusica(String musica) {
+    public void setMusica(List<String> musica) {
         this.musica = musica;
     }
 
-    public String getFotografia() {
+    public List<String> getFotografia() {
         return fotografia;
     }
 
-    public void setFotografia(String fotografia) {
+    public void setFotografia(List<String> fotografia) {
         this.fotografia = fotografia;
     }
 
