@@ -24,6 +24,7 @@ public class SearchTest {
         /*System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");*/
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
     }
 
     @Test
@@ -33,7 +34,7 @@ public class SearchTest {
         PaginaImagen paginaImagen = new PaginaImagen(driver);
 
         paginaEntrada.loadHomePage();
-        paginaEntrada.search("scoop");
+        paginaEntrada.search("Histoires extraordinaires");
 
         paginaPelicula.scraper();
 

@@ -26,15 +26,17 @@ public class PáginaEntradaFilmaffinity {
     }
 
     public void search(String searchText) {
-        WebElement barraBusqueda = driver.findElement(BARRA_BUSQUEDA);
-        /*WebElement cookies = driver.findElement(COOKIES);
-
+        //Cookies
+        WebElement cookies = driver.findElement(COOKIES);
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOf(cookies));
+        cookies.click();
 
-        cookies.click();*/
-
+        //Barra de busqueda
+        WebElement barraBusqueda = driver.findElement(BARRA_BUSQUEDA);
         barraBusqueda.sendKeys(searchText);
+
+        //Pinchar en la pelicula
         WebElement pelicula = driver.findElement(PELICULA);
         WebDriverWait wait2 = new WebDriverWait(driver, 30);
         wait2.until(ExpectedConditions.visibilityOf(pelicula));
