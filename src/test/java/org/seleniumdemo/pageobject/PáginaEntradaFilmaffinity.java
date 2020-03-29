@@ -1,13 +1,14 @@
 package org.seleniumdemo.pageobject;
 
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Objects;
+
+import static org.seleniumdemo.pageobject.PáginaResultadosBusqueda.searchPelicula;
+import static org.seleniumdemo.utils.ComprobarPagina.*;
 
 public class PáginaEntradaFilmaffinity {
     private final WebDriver driver;
@@ -25,22 +26,27 @@ public class PáginaEntradaFilmaffinity {
         driver.get("https://www.filmaffinity.com/es/main.html");
     }
 
-    public void search(String searchText) {
+    public Boolean search(String searchText) {
+
         //Cookies
-        WebElement cookies = driver.findElement(COOKIES);
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.visibilityOf(cookies));
-        cookies.click();
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        wait.withMessage("cerrando pestaña de publicidad...");
+        cerrarPublicidad(driver);
+        cerrarCookies(driver);
+        cerrarPublicidad(driver);
+        try {
+            WebElement barraBusqueda = driver.findElement(By.xpath("/html/body/div[1]/div[1]/div/div[2]/form/input[1]"));
+            WebDriverWait wait2 = new WebDriverWait(driver, 10);
+            wait2.until(ExpectedConditions.visibilityOf(barraBusqueda));
+            barraBusqueda.sendKeys(searchText);
+            barraBusqueda.sendKeys(Keys.DOWN, Keys.ENTER);
+        } catch (NoSuchElementException e) {
+            return false;
+        }
 
-        //Barra de busqueda
-        WebElement barraBusqueda = driver.findElement(BARRA_BUSQUEDA);
-        barraBusqueda.sendKeys(searchText);
 
-        //Pinchar en la pelicula
-        WebElement pelicula = driver.findElement(PELICULA);
-        WebDriverWait wait2 = new WebDriverWait(driver, 30);
-        wait2.until(ExpectedConditions.visibilityOf(pelicula));
-        pelicula.click();
+        return searchPelicula(driver, searchText);
+
     }
 
 

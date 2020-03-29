@@ -27,12 +27,11 @@ public class PaginaImagen {
     }
 
 
-    public PaginaPelicula saveImage() throws IOException {
+    public PaginaPelicula saveImage(String nombre, int i) throws IOException {
         WebElement Image = driver.findElement(By.xpath("/html/body/img"));
         String src = Image.getAttribute("src");
         BufferedImage bufferedImage = ImageIO.read(new URL(src));
-        String path = "scoop";
-        File outputfile = new File("Portadas/" + path + ".jpg");
+        File outputfile = new File("Portadas/" + nombre + "-" + i + ".jpg");
         ImageIO.write(bufferedImage, "png", outputfile);
         return new PaginaPelicula(driver);
     }

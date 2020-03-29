@@ -17,19 +17,18 @@ public class pruebasExcel {
     @Test
     public void crearArchivoBasico() {
         XSSFWorkbook workbook = new XSSFWorkbook();
-        XSSFSheet sheet = workbook.createSheet("Datatypes in Java");
+        XSSFSheet sheet = workbook.createSheet("Peliculas Marzo 20");
+
        List<String> list = Arrays.asList("1","2","1","2","1","2");
+
        String res = String.join(",",list);
 
         Object[][] datatypes = {
                 {"Datatype", "Type", "Size(in bytes)"},
-                {"int", "Primitive", res},
-                {"float", res, 4},
-                {"double", "Primitive", 8},
-                {"char", "Primitive", 1},
-                {"String", "Non-Primitive", "No fixed size"}
+
         };
 
+Row ultimaFila = sheet.getRow(0);
         int rowNum = 0;
         System.out.println("Creating excel");
 

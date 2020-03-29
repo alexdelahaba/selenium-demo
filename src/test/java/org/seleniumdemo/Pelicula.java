@@ -18,6 +18,24 @@ public class Pelicula {
     Double nota;
     String votos;
     String url;
+    String notaPersonal;
+    String comentario;
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    public String getNotaPersonal() {
+        return notaPersonal;
+    }
+
+    public void setNotaPersonal(String notaPersonal) {
+        this.notaPersonal = notaPersonal;
+    }
 
     public String getTitulo() {
         return titulo;
