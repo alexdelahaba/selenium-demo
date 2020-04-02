@@ -27,9 +27,9 @@ public class PáginaResultadosBusqueda {
         try {
             String xpath1 = "//*[@id=\"title-result\"]/div/div[";
             String xpath2 = "]/div[2]/div/div[2]/div[2]/a";
-            for (int i = 2; i < 6; i++) {
+            for (int i = 2; i < 5; i++) {
                 WebElement pelicula = driver.findElement(By.xpath(xpath1 + i + xpath2));
-                if (pelicula.getText().equals(searchText)) {
+                if (pelicula.getText().toLowerCase().equals(searchText.toLowerCase())) {
                     pelicula.click();
                     ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
                     if (tabs.size() > 1) {
@@ -42,11 +42,10 @@ public class PáginaResultadosBusqueda {
                         }
                         pelicula.click();
                     }
-                } else {
-                    return false;
+                    return true;
                 }
             }
-            return true;
+            return false;
         } catch (Exception e) {
             return false;
         }

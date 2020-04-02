@@ -20,6 +20,15 @@ public class Pelicula {
     String url;
     String notaPersonal;
     String comentario;
+    String urlTrailer;
+
+    public String getUrlTrailer() {
+        return urlTrailer;
+    }
+
+    public void setUrlTrailer(String urlTrailer) {
+        this.urlTrailer = urlTrailer;
+    }
 
     public String getComentario() {
         return comentario;

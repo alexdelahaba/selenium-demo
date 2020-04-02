@@ -321,7 +321,7 @@ public class PaginaPelicula {
     }
 
     public String localizarImagen() {
-        WebElement urlImagen = driver.findElement(By.xpath("/html/body/div[4]/table/tbody/tr/td[2]/div[1]/div[4]/div/div[2]/div[1]/a[1]/img"));
+        WebElement urlImagen = driver.findElement(By.xpath("//*[@id=\"movie-main-image-container\"]/a/img"));
         String url = urlImagen.getAttribute("src");
         return url;
     }
