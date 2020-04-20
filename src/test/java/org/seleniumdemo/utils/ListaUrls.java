@@ -4,11 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ListaUrls {
+    /*Introducir en listaUrls la lista de peliculas en formato de filmaffinity e ir a TestsNavegador*/
     public static List<String> listaUrls = Arrays.asList(
-"https://www.filmaffinity.com/es/film988764.html",
-            "https://www.filmaffinity.com/es/film891809.html",
-            "https://www.filmaffinity.com/es/film695552.html",
-            "https://www.filmaffinity.com/es/film409098.html"
-            );
+
+    );
 
 }

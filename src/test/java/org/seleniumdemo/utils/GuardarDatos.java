@@ -19,8 +19,8 @@ public class GuardarDatos {
     static DateFormat df = new SimpleDateFormat(pattern);
     static Date today = Calendar.getInstance().getTime();
     static String todayAsString = df.format(today);
-    static String FILE_NAME = "Excel/BBDD_" + todayAsString + ".xlsx";
-    private static final String FILE_NAME_REAL = "Excel/pruebaPeliculas.xlsx";
+    static String FILE_NAME = "Excel/CopiasSeguridad/BBDD_" + todayAsString + ".xlsx";
+    private static final String FILE_NAME_REAL = "Excel/0000000000000000000BBDD.xlsx";
 
     public static String convertirListaAString(List<String> lista) {
 
@@ -114,14 +114,15 @@ public class GuardarDatos {
                     {pelicula.getTitulo(), pelicula.getTituloOriginal(), pelicula.getAnio(), pelicula.getDuracion(),
                             pelicula.getPais(), convertirListaAString(pelicula.getDirectores()), convertirListaAString(pelicula.getGuionistas()), convertirListaAString(pelicula.getMusica()),
                             convertirListaAString(pelicula.getFotografia()), convertirListaAString(pelicula.getActores()),
-                            convertirListaAString(pelicula.getGeneros()), pelicula.getSinopsis(), pelicula.getNota(), pelicula.getVotos(), pelicula.getUrl(), 0, "", pelicula.getUrlTrailer()}
+                            convertirListaAString(pelicula.getGeneros()), pelicula.getSinopsis(), pelicula.getNota(), pelicula.getVotos(), pelicula.getUrl(), 0, "",
+                            pelicula.getUrlTrailer(), pelicula.getUrlRottenTomatoes(), pelicula.getUrlIMDB(), pelicula.getUrlJustWatch(),pelicula.getUrlImagen(), pelicula.getId()}
 
             };
             FileInputStream excelFile = new FileInputStream(new File(FILE_NAME_REAL));
             Workbook workbook = new XSSFWorkbook(excelFile);
             Sheet sheet = workbook.getSheetAt(0);
             Integer lastRow = 0;
-            for (int celdaEscrita = 950; celdaEscrita < 1500; celdaEscrita++) {
+            for (int celdaEscrita = 950; celdaEscrita < 2500; celdaEscrita++) {
                 try {
                     sheet.getRow(celdaEscrita).getCell(0);
                 } catch (Exception e) {
@@ -206,6 +207,98 @@ public class GuardarDatos {
             e.printStackTrace();
         }
 
+    }
+
+    public static void guardarUrlImagen(int i, String urlImagen) {
+        try {
+
+            FileInputStream excelFile = new FileInputStream(new File(FILE_NAME_REAL));
+            Workbook workbook = new XSSFWorkbook(excelFile);
+            Sheet sheet = workbook.getSheetAt(0);
+            Row row = sheet.getRow(i+1);
+
+
+            Cell cell1 = row.createCell(21);
+            cell1.setCellValue(urlImagen);
+
+
+            excelFile.close();
+            FileOutputStream outputStream = new FileOutputStream(FILE_NAME_REAL);
+            workbook.write(outputStream);
+            workbook.close();
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void guardarIdPelicula(int i, String urlMod) {
+        try {
+
+            FileInputStream excelFile = new FileInputStream(new File(FILE_NAME_REAL));
+            Workbook workbook = new XSSFWorkbook(excelFile);
+            Sheet sheet = workbook.getSheetAt(0);
+            Row row = sheet.getRow(i+1);
+
+
+            Cell cell1 = row.createCell(22);
+            cell1.setCellValue(urlMod);
+
+
+            excelFile.close();
+            FileOutputStream outputStream = new FileOutputStream(FILE_NAME_REAL);
+            workbook.write(outputStream);
+            workbook.close();
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+    public static void guardarUrlsExtras(Pelicula pelicula, int i) {
+        try {
+
+            FileInputStream excelFile = new FileInputStream(new File(FILE_NAME_REAL));
+            Workbook workbook = new XSSFWorkbook(excelFile);
+            Sheet sheet = workbook.getSheetAt(0);
+            Row row = sheet.getRow(i+1);
+
+
+            Cell cell1 = row.createCell(20);
+            cell1.setCellValue(pelicula.getUrlJustWatch());
+            Cell cell2 = row.createCell(19);
+            cell2.setCellValue(pelicula.getUrlIMDB());
+            Cell cell3 = row.createCell(18);
+            cell3.setCellValue(pelicula.getUrlRottenTomatoes());
+
+            excelFile.close();
+            FileOutputStream outputStream = new FileOutputStream(FILE_NAME_REAL);
+            workbook.write(outputStream);
+            workbook.close();
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+    public static void hacerCopiaDeSeguridad() {
+        String pattern = "MM-dd-yyyy_HH-mm-ss";
+        DateFormat df = new SimpleDateFormat(pattern);
+        Date today = Calendar.getInstance().getTime();
+        String todayAsString = df.format(today);
+        String FILE_NAME = "Excel/CopiasSeguridad/BBDD_" + todayAsString + ".xlsx";
+        try {
+            FileInputStream excelFile = new FileInputStream(new File(FILE_NAME_REAL));
+            Workbook workbook = new XSSFWorkbook(excelFile);
+            excelFile.close();
+            FileOutputStream outputStream = new FileOutputStream(FILE_NAME);
+            workbook.write(outputStream);
+            workbook.close();
+            outputStream.close();
+        } catch (Exception e) {
+
+        }
     }
 
 }

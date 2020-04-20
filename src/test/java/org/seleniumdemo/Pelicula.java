@@ -21,6 +21,51 @@ public class Pelicula {
     String notaPersonal;
     String comentario;
     String urlTrailer;
+    String urlRottenTomatoes;
+    String urlIMDB;
+    String urlJustWatch;
+    String urlImagen;
+    String id;
+
+    public String getUrlImagen() {
+        return urlImagen;
+    }
+
+    public void setUrlImagen(String urlImagen) {
+        this.urlImagen = urlImagen;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUrlRottenTomatoes() {
+        return urlRottenTomatoes;
+    }
+
+    public void setUrlRottenTomatoes(String urlRottenTomatoes) {
+        this.urlRottenTomatoes = urlRottenTomatoes;
+    }
+
+    public String getUrlIMDB() {
+        return urlIMDB;
+    }
+
+    public void setUrlIMDB(String urlIMDB) {
+        this.urlIMDB = urlIMDB;
+    }
+
+    public String getUrlJustWatch() {
+        return urlJustWatch;
+    }
+
+    public void setUrlJustWatch(String urlJustWatch) {
+        this.urlJustWatch = urlJustWatch;
+    }
 
     public String getUrlTrailer() {
         return urlTrailer;

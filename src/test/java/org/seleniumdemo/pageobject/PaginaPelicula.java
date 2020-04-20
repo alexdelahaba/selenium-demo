@@ -326,6 +326,12 @@ public class PaginaPelicula {
         return url;
     }
 
+    public static String localizarUrlImagen(WebDriver driver) {
+        WebElement urlImagen = driver.findElement(By.xpath("//*[@id=\"movie-main-image-container\"]/a/img"));
+        String url = urlImagen.getAttribute("src");
+        return url;
+    }
+
     public List<String> inicializarListaAtributos() {
         List<String> listaAtributos = new ArrayList<String>();
         List<String> listaAtributosFake = Arrays.asList(

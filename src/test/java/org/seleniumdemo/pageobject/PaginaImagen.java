@@ -35,4 +35,32 @@ public class PaginaImagen {
         ImageIO.write(bufferedImage, "png", outputfile);
         return new PaginaPelicula(driver);
     }
+
+    public PaginaPelicula guardarImagen(String nombre) {
+        String urlImagen = null;
+        try {
+            if(nombre.contains(":")){
+                nombre =  nombre.replace(":", "");
+            } else if (nombre.contains("/")){
+                nombre =  nombre.replace("/", "");
+            }else if (nombre.contains(".")){
+                nombre =  nombre.replace(".", "");
+            }else if (nombre.contains("?")){
+                nombre =  nombre.replace("?", "");
+            }else if (nombre.contains("¿")){
+                nombre =  nombre.replace("¿", "");
+            }
+            urlImagen = driver.findElement(By.xpath("//*[@id=\"movie-main-image-container\"]/a/img")).getAttribute("src");
+            driver.get(urlImagen);
+            WebElement Image = driver.findElement(By.xpath("/html/body/img"));
+            String src = Image.getAttribute("src");
+            BufferedImage bufferedImage = ImageIO.read(new URL(src));
+            File outputfile = new File("Portadas/" + nombre + ".jpg");
+            ImageIO.write(bufferedImage, "png", outputfile);
+            return new PaginaPelicula(driver);
+        } catch (Exception e) {
+            System.out.println("Error en la siguiente pelicula: " + urlImagen);
+            return null;
+        }
+    }
 }
